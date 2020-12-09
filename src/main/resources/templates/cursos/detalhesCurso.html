@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>CursosApp</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<h1>Curso</h1>
+	<h3><a href="/listaCursos" class="waves-effect waves-light btn"><i
+			class="material-icons right">playlist_add</i>Lista de Cursos</a></h3>
+			<div th:each="curso : ${cursos}" class="container">
+				<div class="row">
+				<p>Nome: <span th:text="${curso.nome}"></span></p>
+				<p>Local: <span th:text="${curso.local}"></span></p>
+				<p>Data: <span th:text="${curso.data}"></span></p>
+				<p>Horario: <span th:text="${curso.horario}"></span></p>
+				
+				</div>
+				
+				<form method="post">
+					Nome Completo: <input type="text" value="" name="nomeAluno"/>
+					CPF: <input type="text" value="" name="cpf"/>
+					<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+				</form>
+			</div>
+<!-- 			<div> -->
+<!-- 				<div class="container" th:each="aluno : ${aluno}"> -->
+<!-- 				<h5>Lista Convidados: </h5> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="input-field col s6"> -->
+<!-- 						<p><span th:text="${aluno.nomeAluno"></span></p> -->
+<!-- 						</div> -->
+<!-- 						<div class="input-field col s3"> -->
+<!-- 						<p><span th:text="${aluno.rg"></span></p> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+	
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
