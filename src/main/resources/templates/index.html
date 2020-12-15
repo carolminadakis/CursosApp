@@ -8,20 +8,33 @@
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
+<!-- meta charset -->
+<meta charset="utf-8">
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet"
 	href="materialize/css/materialize.min.css" media="screen,projection" />
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="style/styleCss.css">
+
 </head>
 
 <body>
-	<h1>Lista de Cursos</h1>
-	<h3>
-		<a href="/cadastrarCursos" class="waves-effect waves-light btn"><i
-			class="material-icons right">playlist_add</i>Cadastrar Cursos</a>
-	</h3>
+	<header>
+
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo center">Lista de Cursos</a>
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+					<li><a href="/cadastrarCursos"
+						class="waves-effect waves-light btn"><i
+							class="material-icons right">playlist_add</i>Cadastrar Curso</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	</header>
 	<table class="container">
 		<thead>
 			<tr>
@@ -29,14 +42,17 @@
 				<th>Local</th>
 				<th>Data</th>
 				<th>Horario</th>
+				<th>Deletar</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="curso : ${cursos}">
-				<td><a th:href="@{/{codigo}(codigo=${curso.codigo})}"><span th:text="${curso.nome}"></span></a></td>
+				<td><a th:href="@{/{codigo}(codigo=${curso.codigo})}"><span
+						th:text="${curso.nome}"></span></a></td>
 				<td><span th:text="${curso.local}"></span></td>
 				<td><span th:text="${curso.data}"></span></td>
 				<td><span th:text="${curso.horario}"></span></td>
+				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletaCurso').arg(0, curso.codigo)).build()}"><i class="material-icons center">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>

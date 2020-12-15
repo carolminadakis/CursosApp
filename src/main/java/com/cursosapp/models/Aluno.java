@@ -1,14 +1,20 @@
 package com.cursosapp.models;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Aluno {
 
 	@Id
+	@NotNull
 	private Long cpf;
+	
+	@NotEmpty
 	private String nomeAluno;
 	
 	@ManyToOne
